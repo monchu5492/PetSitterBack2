@@ -10,17 +10,17 @@ class PetsController < ApplicationController
   end
 
   def create
-      pet = Pet.new(params.require(:pet).permit(:name, :image, :anmial_type, :age))
+      pet = Pet.new(params.require(:pet).permit(:name, :image, :anmial_type, :age, :owner_id))
       if pet.save
           render json: pet   
       else
-          flash[:message] = pet.errors.full_messages
+        #   flash[:message] = pet.errors.full_messages
       end    
   end
 
   def update
       pet = Pet.find(params[:id])
-      pet.update(params.require(:pet).permit(:name, :image, :anmial_type, :age))
+      pet.update(params.require(:pet).permit(:name, :image, :anmial_type, :age, :owner_id))
       render json: pet
   end
 
