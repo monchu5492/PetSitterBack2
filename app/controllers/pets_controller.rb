@@ -12,12 +12,15 @@ class PetsController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     byebug
+=======
+>>>>>>> e3e29ec2d2062b6d66ad0499139c02d2eb9ffb95
       pet = Pet.new(params.require(:pet).permit(:name, :image, :anmial_type, :age, :owner_id))
       if pet.save
           render json: pet   
       else
-          flash[:message] = pet.errors.full_messages
+        #   flash[:message] = pet.errors.full_messages
       end    
   end
 
