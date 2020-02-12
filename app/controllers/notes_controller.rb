@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def create
-      note = Note.new(params.require(:note).permit(:description, :catagory, :priority))
+      note = Note.new(params.require(:note).permit(:description, :catagory, :priority, :pet_id))
       if Note.save
           render json: note   
       else
@@ -20,7 +20,7 @@ class NotesController < ApplicationController
 
   def update
       note = Note.find(params[:id])
-      note.update(params.require(:note).permit(:description, :catagory, :priority))
+      note.update(params.require(:note).permit(:description, :catagory, :priority, :pet_id))
       render json: note
   end
 

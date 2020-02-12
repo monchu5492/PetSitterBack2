@@ -1,3 +1,5 @@
+require 'byebug'
+
 class PetsController < ApplicationController
   def index
     pets = Pet.all
@@ -10,7 +12,8 @@ class PetsController < ApplicationController
   end
 
   def create
-      pet = Pet.new(params.require(:pet).permit(:name, :image, :anmial_type, :age))
+    byebug
+      pet = Pet.new(params.require(:pet).permit(:name, :image, :anmial_type, :age, :owner_id))
       if pet.save
           render json: pet   
       else
@@ -20,7 +23,7 @@ class PetsController < ApplicationController
 
   def update
       pet = Pet.find(params[:id])
-      pet.update(params.require(:pet).permit(:name, :image, :anmial_type, :age))
+      pet.update(params.require(:pet).permit(:name, :image, :anmial_type, :age, :owner_id))
       render json: pet
   end
 
